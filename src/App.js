@@ -32,7 +32,25 @@ function App() {
       "itemTitle": "printer",
       "itemBody": "1-year-old hp printer. No setup necessary.",
       "price": 2
-    }
+    },
+    {
+      "id": 4,
+      "user_id": 2,
+      "photo": "https://via.placeholder.com/600/92c952",
+      "category": "garden",
+      "itemTitle": "shovel",
+      "itemBody": "stainless steel",
+      "price": 2
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "photo": "https://via.placeholder.com/600/92c952",
+      "category": "music",
+      "itemTitle": "guitar",
+      "itemBody": "electric guitar with speakers",
+      "price": 20
+    },
   ])
 
   const [users, setUsers] = useState([
@@ -40,23 +58,26 @@ function App() {
       "id":1,
       "avatar": "https://via.placeholder.com/600/92c952",
       "username": "Bob",
-      "location": "There"
+      "location": "Somewhere else",
+      "items": [0, 4]
     },
     {
       "id":2,
       "avatar": "https://via.placeholder.com/600/92c952",
       "username": "Leon",
-      "location": "Here"
+      "location": "Here",
+      "items": [2, 3]
     },
     {
       "id":3,
       "avatar": "https://via.placeholder.com/600/92c952",
       "username": "Samantha",
-      "location": "Somewhere"
-    },
+      "location": "Somewhere",
+      "items": [1]
+    }
   ])
   const [user, setUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -72,7 +93,8 @@ function App() {
 
   const handleLoginClick = () => {
     setIsLoggedIn(true)
-  
+    
+    // Generate a random user
     const user_id = Math.floor(Math.random() * 4)
     const randomUser = users.filter(user => (
       user.id === user_id
@@ -104,7 +126,8 @@ function App() {
         </Route>
         <Route exact path="/users/:id" element={
           <Profile 
-            user = {user}
+            user={user}
+            items={items}
           />
         }>
         </Route>
