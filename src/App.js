@@ -39,11 +39,12 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
+    const searchValue = search.toLowerCase();
     const filtered = items.filter(item =>
-      ((item.itemTitle).toLowerCase()).includes(search.toLowerCase()) 
-      || ((item.itemBody).toLowerCase()).includes(search.toLowerCase())
-      // || (item.category.toLowerCase() === search.toLowerCase());
-    )
+      ((item.itemTitle).toLowerCase()).includes(searchValue) 
+      || ((item.itemBody).toLowerCase()).includes(searchValue)
+      || (item.category.toLowerCase().includes(searchValue)))
+
     setSearchResults(filtered);
   }, [items, search])
 
