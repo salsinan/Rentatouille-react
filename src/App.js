@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Home from './Components/Home';
 import Header from './Components/Header';
 import { Routes, Route } from 'react-router-dom';
@@ -34,13 +34,27 @@ function App() {
     }
   ])
 
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const filtered = items.filter(item =>
+      ((item.itemTitle).toLowerCase()).includes(search.toLowerCase()) 
+      || ((item.itemBody).toLowerCase()).includes(search.toLowerCase())
+      // || (item.category.toLowerCase() === search.toLowerCase());
+    )
+    setSearchResults(filtered);
+  }, [items, search])
   return (
     <div className="App">
-      <Header />
+      <Header 
+        search={search}
+        setSearch={setSearch}
+      />
       <Routes>
         <Route exact path="/" element={
             <Home 
-                items={items}
+                items={searchResults}
             />
         }>
         </Route>

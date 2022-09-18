@@ -1,33 +1,36 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ search, setSearch }) => {
   return (
     <header>
       <h1>Rentatouille</h1>
       <h2>Rent a Tool</h2>
       <nav>
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
             <label htmlFor='search'>Search</label>
-            <input 
+            <input
+                id = "search"
                 type="text"
                 placeholder='Search for an item'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
             />
         </form>
         <ul>
-            <li key="home">
+            <li>
                 <Link to="/">Home</Link>
             </li>
-            <li key="about">
+            <li>
                 <Link to="/about">About</Link>
             </li>
-            <li key="login">
+            <li>
                 <Link to="/login">Login/Sign Up</Link>
             </li>
-            <li key="logout">
+            <li>
                 <Link to="/logout">Logout</Link>
             </li>
-            <li key="profile">
+            <li>
                 <Link to="/user/:id">My Profile</Link>
             </li>
         </ul>
