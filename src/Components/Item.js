@@ -10,6 +10,7 @@ const Item = ({ item }) => {
             </p>
         </Link>
         <p>Description: {item.itemBody}</p>
+        <p>Category: {item.category}</p>
         <p>Price: ${item.price}/day</p>
         <p>By User: {item.user_id}</p>
     </section>

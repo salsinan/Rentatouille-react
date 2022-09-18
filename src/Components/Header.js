@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Header = ({ search, setSearch, isLoggedIn, handleLoginClick }) => {
+const Header = ({ search, setSearch, isLoggedIn, handleLoginClick, user }) => {
   return (
     <header>
       <h1>Rentatouille</h1>
@@ -34,7 +34,11 @@ const Header = ({ search, setSearch, isLoggedIn, handleLoginClick }) => {
               </li>
             }
             <li>
-                <Link to="/user/:id">My Profile</Link>
+                {user &&
+                    <Link to={`users/${user.id}`}>
+                    My Profile
+                    </Link>
+                }
             </li>
         </ul>
       </nav>

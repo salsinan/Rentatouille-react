@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import Header from './Components/Header';
-import { Routes, Route } from 'react-router-dom';
+import Profile from './Components/Profile';
 
 function App() {
   const [items, setItems] = useState([
@@ -34,9 +35,30 @@ function App() {
     }
   ])
 
+  const [users, setUsers] = useState([
+    {
+      "id":1,
+      "avatar": "https://via.placeholder.com/600/92c952",
+      "username": "Bob",
+      "location": "There"
+    },
+    {
+      "id":2,
+      "avatar": "https://via.placeholder.com/600/92c952",
+      "username": "Leon",
+      "location": "Here"
+    },
+    {
+      "id":3,
+      "avatar": "https://via.placeholder.com/600/92c952",
+      "username": "Samantha",
+      "location": "Somewhere"
+    },
+  ])
+  const [user, setUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     const searchValue = search.toLowerCase();
@@ -50,6 +72,13 @@ function App() {
 
   const handleLoginClick = () => {
     setIsLoggedIn(!isLoggedIn)
+  
+    const user_id = Math.floor(Math.random() * 4)
+    const randomUser = users.filter(user => (
+      user.id == user_id
+    ))
+    console.log(randomUser);
+    setUser(!isLoggedIn ? randomUser : setUser({}))
   }
 
   return (
@@ -59,12 +88,19 @@ function App() {
         setSearch={setSearch}
         isLoggedIn={isLoggedIn}
         handleLoginClick={handleLoginClick}
+        user = {user}
       />
       <Routes>
         <Route exact path="/" element={
             <Home 
                 items={searchResults}
             />
+        }>
+        </Route>
+        <Route exact path="/users/:id" element={
+          <Profile 
+            user = {user}
+          />
         }>
         </Route>
       </Routes>
