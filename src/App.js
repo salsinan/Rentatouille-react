@@ -71,14 +71,18 @@ function App() {
   }, [items, search])
 
   const handleLoginClick = () => {
-    setIsLoggedIn(!isLoggedIn)
+    setIsLoggedIn(true)
   
     const user_id = Math.floor(Math.random() * 4)
     const randomUser = users.filter(user => (
-      user.id == user_id
+      user.id === user_id
     ))
-    console.log(randomUser);
-    setUser(!isLoggedIn ? randomUser : setUser({}))
+    setUser(randomUser[0]);
+  }
+
+  const handleLogoutClick = () => {
+    setIsLoggedIn(false)
+    setUser({});
   }
 
   return (
@@ -88,6 +92,7 @@ function App() {
         setSearch={setSearch}
         isLoggedIn={isLoggedIn}
         handleLoginClick={handleLoginClick}
+        handleLogoutClick= {handleLogoutClick}
         user = {user}
       />
       <Routes>
