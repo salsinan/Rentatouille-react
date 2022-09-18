@@ -1,3 +1,31 @@
+Planned components:
+      {/* <Home />
+          list of items by different users: 
+          show photo, name, rental price (per day), owner name & rating, location, category
+          search to narrow down list -- search by location, category, or input name
+          sort by feature -- price, highest rating
+          Items are clickable -->
+        <Item />
+          has an id,
+          user_id,
+          an image or images depicting it,
+          a category (dropdown), rental price, name, description, location
+          calendar of availability
+          (account for user owning/renting multiples of the same item -- like kayaks)
+          if logged in, user can select dates to rent -- item would update calendar
+        <User />
+          user profile -- once authenticated
+          user_id
+          username
+          avatar -- default with option to change
+          list of items belonging to the user, if any with CRUD options
+          list of rentals by the user, if any
+          list of reviews by the user, if any
+      <About />
+      <Contact /> */}
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
