@@ -18,7 +18,7 @@ function App() {
       "id": 2,
       "user_id": 3,
       "photo": "https://via.placeholder.com/600/92c952",
-      "category": "garden",
+      "category": "home",
       "itemTitle": "vacuum",
       "itemBody": "cordless BRAND vacuum cleaner in perfect condition",
       "price": 5
@@ -27,7 +27,7 @@ function App() {
       "id": 3,
       "user_id": 2,
       "photo": "https://via.placeholder.com/600/92c952",
-      "category": "garden",
+      "category": "office",
       "itemTitle": "printer",
       "itemBody": "1-year-old hp printer. No setup necessary.",
       "price": 2
@@ -36,6 +36,7 @@ function App() {
 
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     const filtered = items.filter(item =>
@@ -45,11 +46,18 @@ function App() {
     )
     setSearchResults(filtered);
   }, [items, search])
+
+  const handleLoginClick = () => {
+    setIsLoggedIn(!isLoggedIn)
+  }
+
   return (
     <div className="App">
       <Header 
         search={search}
         setSearch={setSearch}
+        isLoggedIn={isLoggedIn}
+        handleLoginClick={handleLoginClick}
       />
       <Routes>
         <Route exact path="/" element={

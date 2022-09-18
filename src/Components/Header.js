@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Header = ({ search, setSearch }) => {
+const Header = ({ search, setSearch, isLoggedIn, handleLoginClick }) => {
   return (
     <header>
       <h1>Rentatouille</h1>
@@ -24,12 +24,15 @@ const Header = ({ search, setSearch }) => {
             <li>
                 <Link to="/about">About</Link>
             </li>
-            <li>
-                <Link to="/login">Login/Sign Up</Link>
-            </li>
-            <li>
-                <Link to="/logout">Logout</Link>
-            </li>
+            { isLoggedIn ? 
+              <li onClick={handleLoginClick}>
+                <Link to="/">Logout</Link>
+              </li>
+              : 
+              <li onClick={handleLoginClick}>
+                <Link to="/">login</Link>
+              </li>
+            }
             <li>
                 <Link to="/user/:id">My Profile</Link>
             </li>
