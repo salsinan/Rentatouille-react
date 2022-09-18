@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Home from './Components/Home';
+import Header from './Components/Header';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const [items, setItems] = useState([
@@ -9,7 +11,7 @@ function App() {
       "photo": "https://via.placeholder.com/600/92c952",
       "category": "garden",
       "itemTitle": "lawnmower",
-      "itemBody": "A machine that mows lawns",
+      "itemBody": "manual, lightweight lawnmower",
       "price": 10
     },
     {
@@ -18,8 +20,8 @@ function App() {
       "photo": "https://via.placeholder.com/600/92c952",
       "category": "garden",
       "itemTitle": "vacuum",
-      "itemBody": "A machine that mows lawns",
-      "price": 10
+      "itemBody": "cordless BRAND vacuum cleaner in perfect condition",
+      "price": 5
     },
     {
       "id": 3,
@@ -27,17 +29,22 @@ function App() {
       "photo": "https://via.placeholder.com/600/92c952",
       "category": "garden",
       "itemTitle": "printer",
-      "itemBody": "A machine that mows lawns",
-      "price": 10
+      "itemBody": "1-year-old hp printer. No setup necessary.",
+      "price": 2
     }
   ])
 
   return (
     <div className="App">
-      <Home 
-        items={items}
-      />
-
+      <Header />
+      <Routes>
+        <Route exact path="/" element={
+            <Home 
+                items={items}
+            />
+        }>
+        </Route>
+      </Routes>
     </div>
   );
 }
