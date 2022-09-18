@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Home from './Components/Home';
 import Header from './Components/Header';
 import Profile from './Components/Profile';
@@ -80,6 +80,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const searchValue = search.toLowerCase();
@@ -92,10 +93,10 @@ function App() {
   }, [items, search])
 
   const handleLoginClick = () => {
-    setIsLoggedIn(true)
+    setIsLoggedIn(true);
     
     // Generate a random user
-    const user_id = Math.floor(Math.random() * 4)
+    const user_id = Math.floor(Math.random() * 4);
     const randomUser = users.filter(user => (
       user.id === user_id
     ))
@@ -105,6 +106,7 @@ function App() {
   const handleLogoutClick = () => {
     setIsLoggedIn(false)
     setUser({});
+    navigate('/');
   }
 
   return (
