@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Item from './Item';
 
 const Profile = ({ user, items }) => {
@@ -24,8 +25,15 @@ const Profile = ({ user, items }) => {
                   }}
                 >
                   {user.items.map(item => (
-                    <Item item={items[item]}/>
+                    !item ?
+                      <p>No items to show</p>
+                    :
+                      <Item item={items[item]}/>
+                    
                   ))}
+                  <Link to="/items/create">
+                    <button>Post New Item</button>
+                  </Link>
                 </div>
             </section>
             :

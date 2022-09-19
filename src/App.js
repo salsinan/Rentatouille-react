@@ -4,7 +4,9 @@ import Home from './Components/Home';
 import Header from './Components/Header';
 import Profile from './Components/Profile';
 import ItemDetails from './Components/ItemDetails';
+import AddItemForm from './Components/AddItemForm';
 import Footer from './Components/Footer';
+import apiRequest from './Components/apiRequest';
 
 function App() {
   const API_URL = "http://localhost:3500/"
@@ -32,7 +34,7 @@ function App() {
       try {
         const itemsResponse = await fetch(`${API_URL}items`);
         const usersResponse = await fetch(`${API_URL}users`);
-        if (!itemsResponse.ok || !usersResponse.ok) throw Error('No data to show')
+        if (!itemsResponse.ok || !usersResponse.ok) throw Error('No data to show. Please reload the page.')
         const itemsList = await itemsResponse.json();
         const usersList = await usersResponse.json();
         setItems(itemsList);
@@ -42,6 +44,7 @@ function App() {
       }
     }
     fetchItems();
+    setUser(users[0]);
   }, [])
 
   const handleLoginClick = () => {
@@ -59,6 +62,19 @@ function App() {
     setIsLoggedIn(false)
     setUser({});
     navigate('/');
+  }
+
+  // CRUD
+  const addItem = async (newItem) => {
+    const postOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newItem)
+    }
+    const result = await apiRequest(`${API_URL}items`, postOptions)
+    if (result) setFetchError(result);
   }
 
   return (
@@ -84,6 +100,16 @@ function App() {
           <Profile 
             user={user}
             items={items}
+          />
+        }>
+        </Route>
+        <Route exact path="/items/create" element={
+          <AddItemForm 
+            items={items}
+            user={user}
+            setItems={setItems}
+            addItem={addItem}
+            navigate={navigate}
           />
         }>
         </Route>

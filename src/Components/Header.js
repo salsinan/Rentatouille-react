@@ -23,7 +23,7 @@ const Header = ({
           {
             isLoggedIn &&
               <button>
-                <Link to={`users/${user.id}`}>
+                <Link to={`/users/${user.id}`}>
                   Dashboard
                 </Link>
               </button>
