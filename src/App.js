@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './Components/Home';
 import Header from './Components/Header';
 import Profile from './Components/Profile';
-import Item from './Components/Item';
+import ItemDetails from './Components/ItemDetails';
 import Footer from './Components/Footer';
 
 function App() {
@@ -136,10 +136,13 @@ function App() {
           />
         }>
         </Route>
-        {/* <Route exact path="/items/:id" element={
-          <Item />
+        <Route exact path="/items/:id" element={
+          <ItemDetails 
+            items={items}
+            users={users}
+          />
         }>
-        </Route> */}
+        </Route>
       </Routes>
       <Footer />
     </div>

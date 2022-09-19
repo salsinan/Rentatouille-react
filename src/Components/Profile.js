@@ -6,12 +6,12 @@ const Profile = ({ user, items }) => {
         {user.id ?
             <section>
                 <img src={user.avatar} alt={`${user.username}'s avatar`} id="avatar"></img>
-                <h3>Username: {user.username}</h3>
-                <h3 
+                <p>Username: {user.username}</p>
+                <p 
                 style={{ marginBottom: "4rem", borderBottom: "1px solid black"}}
                 >
                   {user.location}
-                </h3>
+                </p>
                 <h4>
                   Your Listed Touilles
                 </h4>
@@ -30,7 +30,7 @@ const Profile = ({ user, items }) => {
             </section>
             :
             <section>
-                <p>The user does not exist</p>
+                <div>The user does not exist</div>
             </section>
         }
     </main>

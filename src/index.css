@@ -60,7 +60,7 @@ nav {
   flex-direction: column;
 }
 
-#navButtons button {
+#navButtons button, #rentBtn {
   border-radius: 10px;
   font-weight: bold;
   padding:10px;
@@ -70,7 +70,7 @@ nav {
   box-shadow: 3px 0 2px 1px black;
 }
 
-#navButtons button:hover {
+#navButtons button:hover, #rentBtn:hover {
   box-shadow: 9px 0 4px 2px black;
 }
 
@@ -124,6 +124,7 @@ nav {
 #itemImage {
   display: block;
   width: 90%;
+  max-width: 15rem;
   margin: 0 auto;
   border-radius: 15px;
 } 
@@ -156,6 +157,29 @@ nav {
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: left;
+}
+
+/* ITEM DETAILS */
+.itemDetails {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemDetails p {
+  margin: 0.8rem auto;
+  width: 90%;
+  text-align: center;
+}
+
+#rentBtn {
+  display: block;
+  margin: 1rem auto;
+  width: 100%;
+  background-color: rgb(223, 193, 198);
 }
 
 /* FOOTER */
