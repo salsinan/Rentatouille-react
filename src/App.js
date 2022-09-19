@@ -3,6 +3,8 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Home from './Components/Home';
 import Header from './Components/Header';
 import Profile from './Components/Profile';
+import Item from './Components/Item';
+import Footer from './Components/Footer';
 
 function App() {
   const [items, setItems] = useState([
@@ -58,21 +60,21 @@ function App() {
       "id":1,
       "avatar": "https://via.placeholder.com/600/92c952",
       "username": "Bob",
-      "location": "Somewhere else",
+      "location": "Beaverton, OR",
       "items": [0, 4]
     },
     {
       "id":2,
       "avatar": "https://via.placeholder.com/600/92c952",
       "username": "Leon",
-      "location": "Here",
+      "location": "Baltimore, MD",
       "items": [2, 3]
     },
     {
       "id":3,
       "avatar": "https://via.placeholder.com/600/92c952",
       "username": "Samantha",
-      "location": "Somewhere",
+      "location": "San Francisco, CA",
       "items": [1]
     }
   ])
@@ -123,6 +125,7 @@ function App() {
         <Route exact path="/" element={
             <Home 
                 items={searchResults}
+                setSearch={setSearch}
             />
         }>
         </Route>
@@ -133,7 +136,12 @@ function App() {
           />
         }>
         </Route>
+        {/* <Route exact path="/items/:id" element={
+          <Item />
+        }>
+        </Route> */}
       </Routes>
+      <Footer />
     </div>
   );
 }

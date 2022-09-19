@@ -1,49 +1,34 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
+import logo from '../logo.svg';
 
 const Header = ({ 
-    search, setSearch, isLoggedIn, handleLoginClick, handleLogoutClick, user 
+    isLoggedIn, handleLoginClick, handleLogoutClick, user 
 }) => {
   return (
     <header>
-      <h1>Rentatouille</h1>
-      <h2>Rent a Tool</h2>
+      <Link to="/">
+        <img src={logo} alt="Rent A Tool Logo" id="logo"></img>
+      </Link>
       <nav>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor='search'>Search</label>
-          <input
-            id = "search"
-            type="text"
-            placeholder='Search for an item'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </form>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
+        <aside id="navButtons">
           { isLoggedIn ? 
-              <li onClick={handleLogoutClick}>
+              <button onClick={handleLogoutClick}>
                 <Link to="/">Logout</Link>
-              </li>
+              </button>
               : 
-              <li onClick={handleLoginClick}>
+              <button onClick={handleLoginClick}>
                 <Link to="/">login</Link>
-              </li>
+              </button>
           }
           {
             isLoggedIn &&
-              <li>
+              <button>
                 <Link to={`users/${user.id}`}>
-                  My Profile
+                  Dashboard
                 </Link>
-              </li>
+              </button>
           }
-        </ul>
+        </aside>
       </nav>
     </header>
   )
