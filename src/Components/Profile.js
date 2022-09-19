@@ -3,7 +3,7 @@ import Item from './Item';
 const Profile = ({ user, items }) => {
   return (
     <main className="userInfo">
-        {user.id ?
+        {user && user.id ?
             <section>
                 <img src={user.avatar} alt={`${user.username}'s avatar`} id="avatar"></img>
                 <p>Username: {user.username}</p>

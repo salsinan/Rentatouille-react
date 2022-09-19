@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-const Home = ({ items, search, setSearch }) => {
+const Home = ({ items, search, setSearch, fetchError }) => {
   return (
     <main className="homepage">
       <form onSubmit={(e) => e.preventDefault()} id="searchForm">
@@ -13,13 +13,19 @@ const Home = ({ items, search, setSearch }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
-      <p className="items">
-        {items.map(item => (
-            <Item 
-                item={item}
-            />
-        ))}
-      </p>
+      {items.length ?
+        <div className="items">
+          {items.map(item => (
+              <Item 
+                  item={item}
+              />
+          ))}
+        </div>
+        :
+        <div className="fetchError">
+          <p>{fetchError}</p>
+        </div>
+      }
     </main>
   )
 }

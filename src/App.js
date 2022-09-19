@@ -7,81 +7,14 @@ import ItemDetails from './Components/ItemDetails';
 import Footer from './Components/Footer';
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      "id": 1,
-      "user_id": 1,
-      "photo": "https://via.placeholder.com/600/92c952",
-      "category": "garden",
-      "itemTitle": "lawnmower",
-      "itemBody": "manual, lightweight lawnmower",
-      "price": 10
-    },
-    {
-      "id": 2,
-      "user_id": 3,
-      "photo": "https://via.placeholder.com/600/92c952",
-      "category": "home",
-      "itemTitle": "vacuum",
-      "itemBody": "cordless BRAND vacuum cleaner in perfect condition",
-      "price": 5
-    },
-    {
-      "id": 3,
-      "user_id": 2,
-      "photo": "https://via.placeholder.com/600/92c952",
-      "category": "office",
-      "itemTitle": "printer",
-      "itemBody": "1-year-old hp printer. No setup necessary.",
-      "price": 2
-    },
-    {
-      "id": 4,
-      "user_id": 2,
-      "photo": "https://via.placeholder.com/600/92c952",
-      "category": "garden",
-      "itemTitle": "shovel",
-      "itemBody": "stainless steel",
-      "price": 2
-    },
-    {
-      "id": 5,
-      "user_id": 1,
-      "photo": "https://via.placeholder.com/600/92c952",
-      "category": "music",
-      "itemTitle": "guitar",
-      "itemBody": "electric guitar with speakers",
-      "price": 20
-    },
-  ])
-
-  const [users, setUsers] = useState([
-    {
-      "id":1,
-      "avatar": "https://via.placeholder.com/600/92c952",
-      "username": "Bob",
-      "location": "Beaverton, OR",
-      "items": [0, 4]
-    },
-    {
-      "id":2,
-      "avatar": "https://via.placeholder.com/600/92c952",
-      "username": "Leon",
-      "location": "Baltimore, MD",
-      "items": [2, 3]
-    },
-    {
-      "id":3,
-      "avatar": "https://via.placeholder.com/600/92c952",
-      "username": "Samantha",
-      "location": "San Francisco, CA",
-      "items": [1]
-    }
-  ])
+  const API_URL = "http://localhost:3500/"
+  const [items, setItems] = useState([])
+  const [users, setUsers] = useState([])
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [fetchError, setFetchError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -93,6 +26,23 @@ function App() {
 
     setSearchResults(filtered);
   }, [items, search])
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const itemsResponse = await fetch(`${API_URL}items`);
+        const usersResponse = await fetch(`${API_URL}users`);
+        if (!itemsResponse.ok || !usersResponse.ok) throw Error('No data to show')
+        const itemsList = await itemsResponse.json();
+        const usersList = await usersResponse.json();
+        setItems(itemsList);
+        setUsers(usersList);
+      } catch (err) {
+        setFetchError(err.message);
+      }
+    }
+    fetchItems();
+  }, [])
 
   const handleLoginClick = () => {
     setIsLoggedIn(true);
@@ -126,6 +76,7 @@ function App() {
             <Home 
                 items={searchResults}
                 setSearch={setSearch}
+                fetchError={fetchError}
             />
         }>
         </Route>
