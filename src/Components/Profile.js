@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Item from './Item';
 
 const Profile = ({ user, items }) => {
+  const { id } = useParams();
+  const userItems = items.filter(item => item.user_id == id);
   return (
     <main className="userInfo">
         {user && user.id ?
@@ -24,13 +26,16 @@ const Profile = ({ user, items }) => {
                     justifyContent: "center"
                   }}
                 >
-                  {user.items.map(item => (
-                    !item ?
-                      <p>No items to show</p>
-                    :
-                      <Item item={items[item]}/>
-                    
-                  ))}
+                  {userItems && 
+                    <div>
+                      {userItems.map(item =>(
+                        <Item item={item}/>
+                      ))}
+                    </div>
+                  }
+                  {!userItems &&
+                    <div>You have no listed items</div>
+                  }
                   <Link to="/items/create">
                     <button>Post New Item</button>
                   </Link>

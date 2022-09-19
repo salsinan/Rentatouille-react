@@ -12,6 +12,7 @@ function App() {
   const API_URL = "http://localhost:3500/"
   const [items, setItems] = useState([])
   const [users, setUsers] = useState([])
+  const [userItems, setUserItems] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState('');
@@ -25,9 +26,16 @@ function App() {
       ((item.itemTitle).toLowerCase()).includes(searchValue) 
       || ((item.itemBody).toLowerCase()).includes(searchValue)
       || (item.category.toLowerCase().includes(searchValue)))
+    
+    // if (user !== undefined) {
+    //   const profileItems = items.filter(item => 
+    //     (item.user_id == user.id)
+    //   )
+    //   setUserItems(profileItems);
+    // }
 
     setSearchResults(filtered);
-  }, [items, search])
+  }, [items, search, userItems])
 
   useEffect(() => {
     const fetchItems = async () => {
