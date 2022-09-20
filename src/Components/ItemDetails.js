@@ -20,7 +20,7 @@ const ItemDetails = ({ items, users, handleDelete }) => {
       {item !== undefined &&
         <div>
           <img src={item.photo} alt={item.itemTitle} id="itemImage"></img>
-          <p><b>{item.itemTitle}</b></p>
+          <h3><b>{item.itemTitle}</b></h3>
           <p><b>Price:</b> ${item.price}/day</p>
           <p><b>Description:</b> {item.itemBody}</p>
           <p><b>Listed By:</b> {user.username}</p>
