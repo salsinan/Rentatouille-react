@@ -31,22 +31,23 @@ function App() {
     setSearchResults(filtered);
   }, [items, search])
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const itemsResponse = await fetch(`${API_URL}items`);
-        const usersResponse = await fetch(`${API_URL}users`);
-        if (!itemsResponse.ok || !usersResponse.ok) throw Error('No data to show. Please reload the page.')
-        const itemsList = await itemsResponse.json();
-        const usersList = await usersResponse.json();
-        setItems(itemsList);
-        setUsers(usersList);
-      } catch (err) {
-        setFetchError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
+  const fetchItems = async () => {
+    try {
+      const itemsResponse = await fetch(`${API_URL}items`);
+      const usersResponse = await fetch(`${API_URL}users`);
+      if (!itemsResponse.ok || !usersResponse.ok) throw Error('No data to show. Please reload the page.')
+      const itemsList = await itemsResponse.json();
+      const usersList = await usersResponse.json();
+      setItems(itemsList);
+      setUsers(usersList);
+    } catch (err) {
+      setFetchError(err.message);
+    } finally {
+      setIsLoading(false);
     }
+  }
+
+  useEffect(() => {
     fetchItems();
     setUser(users[0]);
   }, [])
@@ -73,7 +74,6 @@ function App() {
     navigate('/');
   }
 
-  // CRUD
   const addItem = async (newItem) => {
     const postOptions = {
         method: 'POST',
@@ -84,6 +84,18 @@ function App() {
     }
     const result = await apiRequest(`${API_URL}items`, postOptions)
     if (result) setFetchError(result);
+  }
+
+  const handleDelete = async (id) => {
+    const updatedItems = items.filter(item => item.id !== id)
+    setItems(updatedItems);
+
+    const deletOptions = { method: 'DELETE' };
+    const reqUrl = `${API_URL}items/${id}`;
+    const result = await apiRequest(reqUrl, deletOptions);
+    if (result) setFetchError(result);
+    fetchItems();
+    navigate('/');
   }
 
   return (
@@ -125,6 +137,7 @@ function App() {
         <Route exact path="/items/:id" element={
           <ItemDetails 
             items={items}
+            handleDelete={handleDelete}
             users={users}
           />
         }>
