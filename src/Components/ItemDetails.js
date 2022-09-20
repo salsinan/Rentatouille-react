@@ -12,6 +12,7 @@ const ItemDetails = ({ items, users, handleDelete }) => {
     reserveDate.target.valueAsDate ?
       setSuccess(`Item reserved on ${reserveDate.target.valueAsDate.toDateString()}`)
     : setSuccess("Please select a date and try again.")
+    document.getElementById('reservationSuccess').style.display = "block";
   }
 
   return (
@@ -33,6 +34,7 @@ const ItemDetails = ({ items, users, handleDelete }) => {
               onChange={setReserveDate}
             />
           </form>
+          <div id="reservationSuccess" style={{display:'none'}}>{success}</div>
           <button 
             id="rentBtn" 
             className="itemUpdate"
@@ -40,11 +42,10 @@ const ItemDetails = ({ items, users, handleDelete }) => {
           >
               Reserve
           </button>
-          <div id="reservationSuccess">{success}</div>
-          <div>
+          <div className='btnContainer'>
             <button 
               type="submit" 
-              className="itemUpdate"
+              id="deleteBtn"
               onClick={() => handleDelete(id)}
             >
               Delete
