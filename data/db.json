@@ -53,6 +53,15 @@
       "itemTitle": "Macbook Air",
       "itemBody": "Brand new Macbook. Rarely used.",
       "price": "50"
+    },
+    {
+      "id": 8,
+      "user_id": 1,
+      "photo": "https://via.placeholder.com/600/92c952",
+      "category": "outdoors",
+      "itemTitle": "skiis",
+      "itemBody": "Don't know enough to describe whatever that is",
+      "price": "5"
     }
   ],
   "users": [

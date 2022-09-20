@@ -6,7 +6,7 @@ const Profile = ({ users, items }) => {
   const userItems = items.filter(item => item.user_id == id);
   const user = users.find(user => user.id == id);
   return (
-    <div>
+    <div className='userProfile'>
       {users.length > 0 ?
         <main className="userInfo">
         <figure>
@@ -19,7 +19,7 @@ const Profile = ({ users, items }) => {
           Your Listed Touilles
         </h4>
           {userItems && 
-            <div>
+            <div id="userItems">
               {userItems.map(item =>(
                 <Item item={item} key={item.id}/>
               ))}
@@ -29,7 +29,7 @@ const Profile = ({ users, items }) => {
             <div>You have no listed items</div>
           }
           <Link to="/items/create">
-            <button>Post New Item</button>
+            <button id="postBtn">Post New Item</button>
           </Link>
         </main>
       :

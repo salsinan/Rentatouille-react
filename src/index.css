@@ -60,7 +60,7 @@ nav {
   flex-direction: column;
 }
 
-#navButtons button, #rentBtn {
+#navButtons button, #rentBtn, #postBtn {
   border-radius: 10px;
   font-weight: bold;
   padding:10px;
@@ -106,7 +106,7 @@ nav {
 .items {
   display: flex;
   gap: 1rem;
-  justify-content: left;
+  justify-content: center;
   flex-flow: row wrap;
   padding-bottom: 50px;
   z-index: -1;
@@ -130,14 +130,15 @@ nav {
 } 
 
 /* DASHBOARD */
+.userProfile {
+  padding: 2rem;
+}
 .userInfo {
   display: flex;
+  gap: 1rem;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
-}
-
-.userInfo section {
-  margin-bottom: 2rem;
 }
 
 .userInfo h4 {
@@ -151,12 +152,12 @@ nav {
   border-radius: 15px;
 }
 
-.userInfo .item {
+#userItems {
   display: flex;
   gap: 1rem;
   flex-direction: row;
   flex-flow: row wrap;
-  justify-content: left;
+  justify-content: center;
 }
 
 /* ITEM DETAILS */
@@ -182,6 +183,37 @@ nav {
   background-color: rgb(223, 193, 198);
 }
 
+#reserveDate {
+  display: block;
+  margin: 1rem auto;
+  width: 50%;
+  border-radius: 10px;
+  min-height: 1rem;
+  padding: 1rem;
+}
+
+/* ADD ITEM FORM */
+.addItemForm {
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addItemForm input {
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+  min-height: 1rem;
+  padding: 1rem;
+}
+
 /* FOOTER */
 .footer {
   background-color: rgba(60, 213, 218, 0.3);
@@ -193,10 +225,6 @@ nav {
 }
 
 @media screen and (max-width: 480px) {
-  .items {
-    justify-content: center;
-  }
-
   #itemImage {
     width: 100%;
   }
