@@ -14,6 +14,7 @@ const Home = ({ items, search, setSearch, fetchError }) => {
           {items.map(item => (
               <Item 
                   item={item}
+                  key={item.id}
               />
           ))}
         </div>

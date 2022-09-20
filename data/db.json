@@ -161,6 +161,15 @@
       "itemTitle": "",
       "itemBody": "",
       "price": 0
+    },
+    {
+      "id": 19,
+      "user_id": 3,
+      "photo": "https://via.placeholder.com/600/92c952",
+      "category": "garden",
+      "itemTitle": "",
+      "itemBody": "",
+      "price": 0
     }
   ],
   "users": [

@@ -7,6 +7,7 @@ import ItemDetails from './Components/ItemDetails';
 import AddItemForm from './Components/AddItemForm';
 import Footer from './Components/Footer';
 import apiRequest from './Components/apiRequest';
+import PageNotFound from './Components/PageNotFound';
 
 function App() {
   const API_URL = "http://localhost:3500/"
@@ -17,6 +18,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [fetchError, setFetchError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,6 +43,8 @@ function App() {
         setUsers(usersList);
       } catch (err) {
         setFetchError(err.message);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchItems();
@@ -48,14 +52,19 @@ function App() {
   }, [])
 
   const handleLoginClick = () => {
-    setIsLoggedIn(true);
+    if (!isLoading && !fetchError) {
+      setIsLoggedIn(true);
     
-    // Generate a random user
-    const user_id = Math.floor(Math.random() * 4);
-    const randomUser = users.filter(user => (
-      user.id === user_id
-    ))
-    setUser(randomUser[0]);
+      // Generate a random user
+      const user_id = Math.floor(Math.random() * 4);
+      const randomUser = users.filter(user => (
+        user.id === user_id
+      ))
+      setUser(randomUser[0]);
+    }
+    else {
+      navigate('/pagenotfound');
+    }
   }
 
   const handleLogoutClick = () => {
@@ -118,6 +127,10 @@ function App() {
             items={items}
             users={users}
           />
+        }>
+        </Route>
+        <Route exact path="/*" element={
+          <PageNotFound/>
         }>
         </Route>
       </Routes>
