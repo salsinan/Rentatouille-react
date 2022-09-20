@@ -60,7 +60,7 @@ nav {
   flex-direction: column;
 }
 
-#navButtons button, #rentBtn, #postBtn, #deleteBtn {
+#navButtons button, #rentBtn, #postBtn, #deleteBtn, .addItemForm button {
   border-radius: 10px;
   font-weight: bold;
   padding:10px;
@@ -176,10 +176,11 @@ nav {
   text-align: center;
 }
 
-#rentBtn, #deleteBtn {
+#rentBtn, #deleteBtn, #postBtn, .addItemForm button {
   display: block;
   margin: 1rem auto;
-  width: 100%;
+  min-width: 10rem;
+  max-width: 25rem;
   background-color: rgb(223, 193, 198);
 }
 
@@ -214,7 +215,8 @@ nav {
   border: 1px solid black;
   border-radius: 15px;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-  width: 50%;
+  max-width: 25rem;
+  min-width: 25rem;
   margin: 2rem auto;
   padding: 2rem;
   display: flex;
@@ -228,6 +230,7 @@ nav {
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
   min-height: 1rem;
+  max-width: 95%;
   padding: 1rem;
 }
 
@@ -244,5 +247,11 @@ nav {
 @media screen and (max-width: 480px) {
   #itemImage {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .addItemForm {
+    width: 90%;
   }
 }
