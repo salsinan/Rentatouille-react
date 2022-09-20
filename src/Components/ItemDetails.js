@@ -9,7 +9,6 @@ const ItemDetails = ({ items, users, handleDelete }) => {
   const user = users.find(user => user.id == item.user_id)
 
   const handleSubmit = () => {
-    console.log(reserveDate.target.valueAsDate)
     reserveDate.target.valueAsDate ?
       setSuccess(`Item reserved on ${reserveDate.target.valueAsDate.toDateString()}`)
     : setSuccess("Please select a date and try again.")
