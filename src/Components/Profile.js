@@ -7,7 +7,8 @@ const Profile = ({ users, items }) => {
   const user = users.find(user => user.id == id);
   return (
     <div>
-      <main className="userInfo">
+      {users.length > 0 ?
+        <main className="userInfo">
         <figure>
           <img src={user.avatar} alt={`${user.username}'s avatar`} id="avatar"></img>
           <figcaption>Username: {user.username}</figcaption>
@@ -30,8 +31,13 @@ const Profile = ({ users, items }) => {
           <Link to="/items/create">
             <button>Post New Item</button>
           </Link>
-      </main>
-  </div>
+        </main>
+      :
+        <main>
+          The users database appears to be empty. Please refresh the page.
+        </main>
+      }
+    </div> 
   )
 }
 

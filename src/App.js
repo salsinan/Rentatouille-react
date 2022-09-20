@@ -12,7 +12,6 @@ function App() {
   const API_URL = "http://localhost:3500/"
   const [items, setItems] = useState([])
   const [users, setUsers] = useState([])
-  const [userItems, setUserItems] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState('');
@@ -28,7 +27,7 @@ function App() {
       || (item.category.toLowerCase().includes(searchValue)))
 
     setSearchResults(filtered);
-  }, [items, search, userItems])
+  }, [items, search])
 
   useEffect(() => {
     const fetchItems = async () => {
