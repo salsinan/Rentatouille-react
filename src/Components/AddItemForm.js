@@ -10,7 +10,6 @@ const AddItemForm = ({ navigate, addItem, items, setItems, user }) => {
     e.preventDefault();
 
     const id = items.length ? items[items.length - 1].id + 1 : 1;
-    // const user_id = Math.floor(Math.random() * 4)
     const user_id = user.id ? user.id : Math.floor(Math.random() * 4);
     const newItem = {id, user_id, photo:"https://via.placeholder.com/600/92c952", category: newItemCategory, itemTitle: newItemTitle, itemBody: newItemBody, price: newItemPrice}
     const allItems = [...items, newItem];

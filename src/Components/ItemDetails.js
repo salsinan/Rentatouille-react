@@ -9,9 +9,7 @@ const ItemDetails = ({ items, users }) => {
       {item &&
         <div>
           <img src={item.photo} alt={item.itemTitle} id="itemImage"></img>
-          <p>
-            <b>{item.itemTitle}</b>
-          </p>
+          <p><b>{item.itemTitle}</b></p>
           <p><b>Price:</b> ${item.price}/day</p>
           <p><b>Description:</b> {item.itemBody}</p>
           <p><b>Listed By:</b> {user.username}</p>
@@ -20,9 +18,9 @@ const ItemDetails = ({ items, users }) => {
         </div>
       }
       {!item &&
-        <>
+        <div>
           <p> Item not Found </p>
-        </>
+        </div>
       }
     </main>
   )

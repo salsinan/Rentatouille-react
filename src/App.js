@@ -26,13 +26,6 @@ function App() {
       ((item.itemTitle).toLowerCase()).includes(searchValue) 
       || ((item.itemBody).toLowerCase()).includes(searchValue)
       || (item.category.toLowerCase().includes(searchValue)))
-    
-    // if (user !== undefined) {
-    //   const profileItems = items.filter(item => 
-    //     (item.user_id == user.id)
-    //   )
-    //   setUserItems(profileItems);
-    // }
 
     setSearchResults(filtered);
   }, [items, search, userItems])
@@ -106,7 +99,7 @@ function App() {
         </Route>
         <Route exact path="/users/:id" element={
           <Profile 
-            user={user}
+            users={users}
             items={items}
           />
         }>

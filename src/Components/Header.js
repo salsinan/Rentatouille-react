@@ -10,25 +10,24 @@ const Header = ({
         <img src={logo} alt="Rent A Tool Logo" id="logo"></img>
       </Link>
       <nav>
-        <aside id="navButtons">
-          { isLoggedIn ? 
+          { isLoggedIn ?
+            <div id="navButtons">
               <button onClick={handleLogoutClick}>
                 <Link to="/">Logout</Link>
               </button>
-              : 
-              <button onClick={handleLoginClick}>
-                <Link to="/">login</Link>
-              </button>
-          }
-          {
-            isLoggedIn &&
               <button>
                 <Link to={`/users/${user.id}`}>
                   Dashboard
                 </Link>
               </button>
+            </div>
+              : 
+            <div id="navButtons">
+              <button onClick={handleLoginClick}>
+                <Link to="/">login</Link>
+              </button>
+            </div>
           }
-        </aside>
       </nav>
     </header>
   )

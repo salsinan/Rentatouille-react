@@ -1,18 +1,14 @@
 import Item from "./Item";
+import SearchForm from "./SearchForm";
 
 const Home = ({ items, search, setSearch, fetchError }) => {
   return (
     <main className="homepage">
-      <form onSubmit={(e) => e.preventDefault()} id="searchForm">
-        <label htmlFor='search'>Search</label>
-        <input
-          id = "search"
-          type="text"
-          placeholder='Search'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </form>
+      <SearchForm
+        search={search}
+        setSearch={setSearch}
+      />
+      
       {items.length ?
         <div className="items">
           {items.map(item => (
