@@ -6,3 +6,4 @@
   - Users can login (by just clicking login); a random user will be selected from the mockend (fake backend): https://www.npmjs.com/package/json-server
   - Users can visit their profiles (dashboards) to view their info and items
   - Users can create new items
+  - Users can delete items (any user can delete any item)
