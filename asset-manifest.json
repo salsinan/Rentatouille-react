@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.c18355b5.css",
-    "main.js": "/react-gh-pages/static/js/main.46644200.js",
-    "static/js/787.f7f4afb1.chunk.js": "/react-gh-pages/static/js/787.f7f4afb1.chunk.js",
-    "static/media/logo.svg": "/react-gh-pages/static/media/logo.5ab7dd9890361f622063d96cf5b8120a.svg",
-    "index.html": "/react-gh-pages/index.html",
-    "main.c18355b5.css.map": "/react-gh-pages/static/css/main.c18355b5.css.map",
-    "main.46644200.js.map": "/react-gh-pages/static/js/main.46644200.js.map",
-    "787.f7f4afb1.chunk.js.map": "/react-gh-pages/static/js/787.f7f4afb1.chunk.js.map"
+    "main.css": "/Rentatouille-react/static/css/main.c18355b5.css",
+    "main.js": "/Rentatouille-react/static/js/main.c9567afc.js",
+    "static/js/787.f7f4afb1.chunk.js": "/Rentatouille-react/static/js/787.f7f4afb1.chunk.js",
+    "static/media/logo.svg": "/Rentatouille-react/static/media/logo.5ab7dd9890361f622063d96cf5b8120a.svg",
+    "index.html": "/Rentatouille-react/index.html",
+    "main.c18355b5.css.map": "/Rentatouille-react/static/css/main.c18355b5.css.map",
+    "main.c9567afc.js.map": "/Rentatouille-react/static/js/main.c9567afc.js.map",
+    "787.f7f4afb1.chunk.js.map": "/Rentatouille-react/static/js/787.f7f4afb1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c18355b5.css",
-    "static/js/main.46644200.js"
+    "static/js/main.c9567afc.js"
   ]
 }
