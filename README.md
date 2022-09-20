@@ -7,3 +7,4 @@
   - Users can visit their profiles (dashboards) to view their info and items
   - Users can create new items
   - Users can delete items (any user can delete any item)
+  - Users can reserve items on selected dates (no backend support)
